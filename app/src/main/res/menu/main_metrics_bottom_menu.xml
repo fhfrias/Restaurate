@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/mnuIndoor"
+        android:enabled="true"
+        android:icon="@drawable/ic_bar_indoor"
+        android:title="Interior"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/mnuOutdoor"
+        android:enabled="true"
+        android:icon="@drawable/ic_table"
+        android:title="Terraza"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/mnuBarra"
+        android:enabled="true"
+        android:icon="@drawable/ic_bar_barra"
+        android:title="Barra"
+        app:showAsAction="ifRoom" />
+
+</menu>

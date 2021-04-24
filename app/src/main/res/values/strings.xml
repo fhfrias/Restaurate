@@ -1,0 +1,48 @@
+<resources>
+    <string name="app_name">Bar - Restaurante</string>
+
+    //NavigatorDrawer
+    <string name="drawer_open">drawer_open</string>
+    <string name="drawer_close">drawer_close</string>
+
+    //Main Menu
+    <string name="delete_product">Eliminar Producto</string>
+    <string name="add_product">Añadir Producto</string>
+    <string name="update_product">Modificar Producto</string>
+    <string name="menu_product">Producto</string>
+    <string name="organization">Organización</string>
+    <string name="logout">Cerrar Sesión</string>
+    <string name="menu_user">Usuarios</string>
+
+
+    //Add Product
+    <string name="add_product_title">Añadir Producto</string>
+    <string name="title_add_foof">Añadir nueva Comida</string>
+    <string name="add_type_food">Tipo de comida</string>
+    <string name="add_food_name">Nombre</string>
+    <string name="add_food_price">Precio €</string>
+    <string name="add_food_image">Imagen Asociada al producto</string>
+    <string name="add_food_text_button">AÑADIR</string>
+    <string name="title_add_drink">Añadir nueva Bebida</string>
+    <string name="add_type_drink">Tipo de bebida</string>
+    <string name="price_no_valid_msg">Precio insertado no válido</string>
+    <string name="add_food_successfull_msg">Se ha añadido correctamente</string>
+    <string name="error_add_food_msg">Error no se ha podido añadir el producto</string>
+    <string-array name="type_drink">
+        <item>Cerveza</item>
+        <item>Vinos Blancos</item>
+        <item>Vinos Tintos</item>
+        <item>Refrescos</item>
+        <item>Copas</item>
+        <item>Combinados</item>
+        <item>Café &amp; Té</item>
+    </string-array>
+    <string-array name="type_food">
+        <item>Tapas</item>
+        <item>Raciones</item>
+        <item>Bocadillos</item>
+        <item>Menu</item>
+        <item>Platos para compartir</item>
+        <item>Desayunos</item>
+    </string-array>
+</resources>

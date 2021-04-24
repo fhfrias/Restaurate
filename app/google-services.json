@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "1040961274225",
+    "project_id": "restaurante-388cf",
+    "storage_bucket": "restaurante-388cf.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1040961274225:android:5eccdc8f96463d881db6d0",
+        "android_client_info": {
+          "package_name": "com.fjhidalgo.restaurante"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1040961274225-fbobl0790gt8ed9o3o55d50h8lcnkapu.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.fjhidalgo.restaurante",
+            "certificate_hash": "3ba427ae2a91b1f45a442710d0ef3c294c426c31"
+          }
+        },
+        {
+          "client_id": "1040961274225-s6d427ti7f5e71km562j8t2lcl9o0p5s.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBQltWe5uoaZV5btQzl7Uouq5-u3_5Y1gY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1040961274225-s6d427ti7f5e71km562j8t2lcl9o0p5s.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

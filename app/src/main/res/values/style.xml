@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    //Styles App
+    <style name="Theme.TextAppearance.Menu" parent="TextAppearance.AppCompat.Menu">
+        <item name="android:textSize">12dp</item>
+    </style>
+
+    <style name="Theme.AppBarOverlay" parent="@style/ThemeOverlay.MaterialComponents.Dark.ActionBar">
+        <item name="colorControlNormal">#FFFFFF</item>
+        <item name="android:fontFamily">@font/sf_ui_text_heavy</item>
+    </style>
+
+    <style name="Theme.PopupOverlay" parent="@style/ThemeOverlay.MaterialComponents.Light">
+        <item name="colorControlNormal">#FFFFFF</item>
+        <item name="android:fontFamily">@font/sf_ui_text_heavy</item>
+    </style>
+
+    <style name="Theme.HA.ToolbarTitleTextAppareance" parent="TextAppearance.AppCompat.Widget.ActionBar.Title">
+        <!--item name="android:inputType">textCapSentences</item-->
+        <item name="android:textSize">16dp</item>
+        <item name="android:fontFamily">@font/sf_ui_text_heavy</item>
+        <item name="fontFamily">@font/sf_ui_text_heavy</item>
+    </style>
+
+    <style name="Theme.Light.TextInputLayout.FilledBox" parent="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.Dense">
+        <item name="boxBackgroundColor">#FFFFFF</item>
+        <item name="hintTextAppearance">@style/Theme.Light.TextAppearance.Design.Hint.FilledBox</item>
+        <item name="android:textColorHint">#aeb3c0</item>
+        <item name="hintTextColor">#aeb3c0</item>
+        <item name="android:fontFamily">@font/sf_ui_text_regular</item>
+    </style>
+
+    <style name="Theme.Light.TextAppearance.Design.Hint.FilledBox" parent="@style/TextAppearance.Design.Hint">
+        <item name="android:textColor">#aeb3c0</item>
+        <item name="colorControlActivated">#aeb3c0</item>
+        <item name="android:textCursorDrawable">@null</item>
+        <item name="android:fontFamily">@font/sf_ui_text_regular</item>
+    </style>
+
+    <style name="Theme.Light.GreenButton" parent="Widget.MaterialComponents.Button">
+        <item name="backgroundTint">@color/primaryColor</item>
+        <item name="cornerRadius">16dp</item>
+        <item name="strokeColor">#606060</item>
+        <item name="strokeWidth">0dp</item>
+        <item name="android:textSize">14dp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">#FFFFFF</item>
+    </style>
+</resources>
