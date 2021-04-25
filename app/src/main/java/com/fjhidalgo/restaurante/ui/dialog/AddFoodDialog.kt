@@ -20,6 +20,7 @@ import com.fjhidalgo.restaurante.util.EditTextUtil
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.textfield.TextInputEditText
 import com.google.firebase.database.*
+import java.io.File
 import java.util.*
 
 class AddFoodDialog: DialogFragment() {
@@ -45,7 +46,6 @@ class AddFoodDialog: DialogFragment() {
     private var spinnerTypeFood: Spinner? = null
     private var btnAddFood: MaterialButton? = null
     private var btnCancel: ImageButton? = null
-    private var postListener: ValueEventListener? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -60,21 +60,6 @@ class AddFoodDialog: DialogFragment() {
         initView(rootView)
         dialog?.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
 
-        App.instance.databaseReference!!.child("Hola").addValueEventListener(object : ValueEventListener {
-
-            override fun onCancelled(error: DatabaseError) {
-                Log.e("Error", "Fallo al cargar la lista")
-            }
-
-            override fun onDataChange(snapshot: DataSnapshot) {
-                for (item in snapshot.children) {
-                    val objectMap: MutableMap<String, Any>
-                    objectMap = item.value as MutableMap<String, Any>
-                    Log.e("Vamos a ver", objectMap.toString())
-
-                }
-            }
-        })
         return rootView
     }
 
@@ -86,7 +71,8 @@ class AddFoodDialog: DialogFragment() {
         btnAddFood = view.findViewById(R.id.btnAccept)
         btnCancel = view.findViewById(R.id.btnCancel)
 
-        //initEventValueListener()
+        //Subir imagen del producto
+        //App.instance.storageReference!!.child("tapas")
 
 
         btnCancel!!.setOnClickListener {
@@ -94,30 +80,22 @@ class AddFoodDialog: DialogFragment() {
         }
 
         btnAddFood!!.setOnClickListener {
+            btnAddFood!!.isEnabled = false
             if(EditTextUtil.isCorrectFormatPrice(etPrice!! .text.toString())){
                 val newFood = FoodModel(etName!!.text.toString(), etPrice!!.text.toString(), UUID.randomUUID().toString())
-
                 App.instance.databaseReference!!.child(AppConstants.MAIN_CHILD).child(AppConstants.FOOD_CHILD).child(spinnerTypeFood!!.selectedItem.toString()).setValue(newFood)
+                        .addOnCompleteListener {
+                    Toast.makeText(requireContext(), getString(R.string.add_product_sucessfull), Toast.LENGTH_LONG).show()
+                            this.dismiss()
+                }
+                btnAddFood!!.isEnabled = true
             } else {
                 Toast.makeText(requireContext(), getString(R.string.price_no_valid_msg), Toast.LENGTH_LONG).show()
+                btnAddFood!!.isEnabled = true
             }
         }
 
        spinnerTypeFood!!.adapter = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_dropdown_item, requireActivity().resources.getStringArray(R.array.type_food))
     }
-
-    private fun initEventValueListener(){
-        postListener = object : ValueEventListener {
-            override fun onDataChange(dataSnapshot: DataSnapshot) {
-                Toast.makeText( requireContext(), getString(R.string.add_food_successfull_msg), Toast.LENGTH_LONG).show()
-            }
-
-            override fun onCancelled(databaseError: DatabaseError) {
-                Toast.makeText(requireContext(), getString(R.string.error_add_food_msg), Toast.LENGTH_LONG).show()
-            }
-        }
-        App.instance.databaseReference!!.addValueEventListener(postListener!!)
-    }
-
 
 }

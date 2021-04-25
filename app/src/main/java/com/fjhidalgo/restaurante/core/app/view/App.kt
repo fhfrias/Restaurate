@@ -15,6 +15,10 @@ import com.fjhidalgo.restaurante.data.preferences.PreferenceHelperImpl
 import com.google.firebase.FirebaseApp
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.ktx.Firebase
+import com.google.firebase.storage.FirebaseStorage
+import com.google.firebase.storage.StorageReference
+import com.google.firebase.storage.ktx.storage
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 
@@ -31,6 +35,8 @@ class App : MultiDexApplication(), AppView {
 
     private var firebaseDatabase: FirebaseDatabase? = null
     var databaseReference: DatabaseReference? = null
+    private var firebaseStorage: FirebaseStorage? = null
+    var storageReference: StorageReference? = null
 
     private val presenter: AppPresenter<AppView, AppInteractor> by lazy {
         AppPresenterImpl<AppView, AppInteractor>(
@@ -90,6 +96,7 @@ class App : MultiDexApplication(), AppView {
         firebaseDatabase = FirebaseDatabase.getInstance()
         firebaseDatabase!!.setPersistenceEnabled(true)
         databaseReference = firebaseDatabase!!.reference
+        firebaseStorage = Firebase.storage
     }
 
 }

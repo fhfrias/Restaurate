@@ -28,6 +28,8 @@
     <string name="price_no_valid_msg">Precio insertado no válido</string>
     <string name="add_food_successfull_msg">Se ha añadido correctamente</string>
     <string name="error_add_food_msg">Error no se ha podido añadir el producto</string>
+    <string name="add_product_sucessfull">Añadido correctamente</string>
+
     <string-array name="type_drink">
         <item>Cerveza</item>
         <item>Vinos Blancos</item>

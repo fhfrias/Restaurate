@@ -6,12 +6,19 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ArrayAdapter
 import android.widget.ImageButton
 import android.widget.Spinner
+import android.widget.Toast
 import androidx.fragment.app.DialogFragment
 import com.fjhidalgo.restaurante.R
+import com.fjhidalgo.restaurante.core.app.view.App
+import com.fjhidalgo.restaurante.data.AppConstants
+import com.fjhidalgo.restaurante.data.model.food.FoodModel
+import com.fjhidalgo.restaurante.util.EditTextUtil
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.textfield.TextInputEditText
+import java.util.*
 
 class AddDrinkDialog: DialogFragment() {
 
@@ -33,8 +40,8 @@ class AddDrinkDialog: DialogFragment() {
 
     private var etName: TextInputEditText? = null
     private var etPrice: TextInputEditText? = null
-    private var spinnerTypeFood: Spinner? = null
-    private var btnAddFood: MaterialButton? = null
+    private var spinnerTypeDrink: Spinner? = null
+    private var btnAddDrink: MaterialButton? = null
     private var btnCancel: ImageButton? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -57,13 +64,31 @@ class AddDrinkDialog: DialogFragment() {
 
         etName = view.findViewById(R.id.etNameDrink)
         etPrice = view.findViewById(R.id.etPriceDrink)
-        spinnerTypeFood = view.findViewById(R.id.spinnerTypeDrink)
-        btnAddFood = view.findViewById(R.id.btnAccept)
+        spinnerTypeDrink = view.findViewById(R.id.spinnerTypeDrink)
+        btnAddDrink = view.findViewById(R.id.btnAccept)
         btnCancel = view.findViewById(R.id.btnCancel)
 
         btnCancel!!.setOnClickListener {
             onAddFoodDialogButtonClicked?.onCancelButtonClicked(this)
         }
+
+        btnAddDrink!!.setOnClickListener {
+            btnAddDrink!!.isEnabled = false
+            if(EditTextUtil.isCorrectFormatPrice(etPrice!! .text.toString())){
+                val newFood = FoodModel(etName!!.text.toString(), etPrice!!.text.toString(), UUID.randomUUID().toString())
+                App.instance.databaseReference!!.child(AppConstants.MAIN_CHILD).child(AppConstants.DRINK_CHILD).child(spinnerTypeDrink!!.selectedItem.toString()).setValue(newFood)
+                        .addOnCompleteListener {
+                            Toast.makeText(requireContext(), getString(R.string.add_product_sucessfull), Toast.LENGTH_LONG).show()
+                            this.dismiss()
+                        }
+                btnAddDrink!!.isEnabled = true
+            } else {
+                Toast.makeText(requireContext(), getString(R.string.price_no_valid_msg), Toast.LENGTH_LONG).show()
+                btnAddDrink!!.isEnabled = true
+            }
+        }
+
+        spinnerTypeDrink!!.adapter = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_dropdown_item, requireActivity().resources.getStringArray(R.array.type_drink))
     }
 
 }
