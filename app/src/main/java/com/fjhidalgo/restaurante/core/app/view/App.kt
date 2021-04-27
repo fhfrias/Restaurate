@@ -35,8 +35,7 @@ class App : MultiDexApplication(), AppView {
 
     private var firebaseDatabase: FirebaseDatabase? = null
     var databaseReference: DatabaseReference? = null
-    private var firebaseStorage: FirebaseStorage? = null
-    var storageReference: StorageReference? = null
+    var firebaseStorage: StorageReference? = null
 
     private val presenter: AppPresenter<AppView, AppInteractor> by lazy {
         AppPresenterImpl<AppView, AppInteractor>(
@@ -96,7 +95,7 @@ class App : MultiDexApplication(), AppView {
         firebaseDatabase = FirebaseDatabase.getInstance()
         firebaseDatabase!!.setPersistenceEnabled(true)
         databaseReference = firebaseDatabase!!.reference
-        firebaseStorage = Firebase.storage
+        firebaseStorage = FirebaseStorage.getInstance().reference
     }
 
 }

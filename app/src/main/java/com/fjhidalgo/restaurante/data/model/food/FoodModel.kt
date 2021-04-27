@@ -5,6 +5,7 @@ class FoodModel {
     var name: String? = null
     var price: String? = null
     var id: String? = null
+    var linkImage: String? = null
 
     constructor(name: String?, price: String?, id: String?){
         this.name = name

@@ -1,6 +1,8 @@
 package com.fjhidalgo.restaurante.module.menu.add_product.view
 
+import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.MenuItem
 import android.widget.ImageButton
 import androidx.appcompat.app.AppCompatActivity
@@ -28,6 +30,7 @@ class AddProductActivity: AppCompatActivity(), AddProductView {
 
     private var btnAddFood: ImageButton? = null
     private var btnAddDrink: ImageButton? = null
+    private var fragmentDialog: DialogFragment? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -57,6 +60,7 @@ class AddProductActivity: AppCompatActivity(), AddProductView {
 
             })
             addFoodDialog.show(supportFragmentManager, "addFoodDialog")
+            fragmentDialog = addFoodDialog
         }
 
         btnAddDrink!!.setOnClickListener {
@@ -71,6 +75,7 @@ class AddProductActivity: AppCompatActivity(), AddProductView {
 
             })
             addDrinkDialog.show(supportFragmentManager, "addFoodDialog")
+            fragmentDialog = addDrinkDialog
         }
     }
 
@@ -102,5 +107,11 @@ class AddProductActivity: AppCompatActivity(), AddProductView {
     override fun onDestroy() {
         presenter.onDetach()
         super.onDestroy()
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+
+        fragmentDialog?.onActivityResult(requestCode, resultCode, data)
     }
 }

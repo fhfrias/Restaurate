@@ -29,6 +29,12 @@
     <string name="add_food_successfull_msg">Se ha añadido correctamente</string>
     <string name="error_add_food_msg">Error no se ha podido añadir el producto</string>
     <string name="add_product_sucessfull">Añadido correctamente</string>
+    <string name="attach_since">Adjuntar desde:</string>
+    <string name="select_camera">Cámara</string>
+    <string name="select_galery">Galería</string>
+    <string name="select_cancel">Cancelar</string>
+    <string name="not_add_photo_product">No se ha podido cargar la foto</string>
+    <string name="error_add_product_msg">No se ha podido añadir el producto</string>
 
     <string-array name="type_drink">
         <item>Cerveza</item>
