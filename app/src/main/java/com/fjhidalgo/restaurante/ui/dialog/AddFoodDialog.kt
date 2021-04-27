@@ -108,6 +108,7 @@ class AddFoodDialog: DialogFragment() {
                 if(uriFood != null){
                     sendImageUriToFirebaseStorage(uriFood!!, newFood)
                 } else {
+                    newFood.linkImage = "null"
                     sendProductToFirebaseDataBase(newFood)
                 }
 
@@ -159,7 +160,7 @@ class AddFoodDialog: DialogFragment() {
 
     private fun sendImageUriToFirebaseStorage(uri: Uri, foodModel: FoodModel) {
 
-        val pathFile: StorageReference = App.instance.firebaseStorage?.child(spinnerTypeFood!!.selectedItem.toString())?.child(foodModel.id!! + ".png")!!
+        val pathFile: StorageReference = App.instance.firebaseStorage?.child(AppConstants.FOOD_CHILD)?.child(spinnerTypeFood!!.selectedItem.toString())?.child(foodModel.id!! + ".png")!!
         pathFile.putFile(uri).addOnSuccessListener(object : OnSuccessListener<UploadTask.TaskSnapshot> {
 
             override fun onSuccess(p0: UploadTask.TaskSnapshot?) {
