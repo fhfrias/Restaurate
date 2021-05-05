@@ -26,6 +26,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".module.menu.add_product.view.AddProductActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".module.menu.delete_product.view.DeleteProductActivity" android:screenOrientation="portrait"/>
 
     </application>
 
