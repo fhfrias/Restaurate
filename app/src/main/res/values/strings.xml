@@ -66,4 +66,13 @@
     <string name="txt_warning_delete">¿ Estás seguro de que desea eliminar el producto seleccionado ?</string>
     <string name="msg_succesfull_delete">Producto eliminado</string>
     <string name="msg_error_delete">ERROR: No se ha podido eliminar el producto seleccionado</string>
+
+    //Update Product
+    <string name="update_product_title">Actuallizar Producto</string>
+    <string name="msg_succesfull_update">Producto Actualizado</string>
+    <string name="msg_error_update">ERROR: No se ha podido actualizar el producto</string>
+    <string name="title_update_product_dialog">Actualizar Producto</string>
+    <string name="name_dialog_update">Nombre</string>
+    <string name="price_dialog_update">Precio €</string>
+    <string name="txt_img_update_dialog">Imagen asociada al producto</string>
 </resources>

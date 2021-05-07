@@ -15,6 +15,7 @@ import com.fjhidalgo.restaurante.module.base.view.BaseFragment
 import com.fjhidalgo.restaurante.module.main.fragment.mainmenu.view.MainMenuFragment
 import com.fjhidalgo.restaurante.module.menu.add_product.view.AddProductActivity
 import com.fjhidalgo.restaurante.module.menu.delete_product.view.DeleteProductActivity
+import com.fjhidalgo.restaurante.module.menu.update_product.view.UpdateProductActivity
 import com.fjhidalgo.restaurante.ui.navigation.view.NavigationDrawerImpl
 import com.fjhidalgo.restaurante.ui.toolbar.CustomAppBarLayout
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -137,7 +138,8 @@ class MainActivity : AppCompatActivity() {
                 startActivity(i)
             }
             2 -> {
-                Log.e("Estamos", " En productos Actualizar")
+                val i = Intent(this, UpdateProductActivity::class.java)
+                startActivity(i)
             }
             3 -> {
                 Log.e("Estamos", " En user")
