@@ -2,9 +2,8 @@ package com.fjhidalgo.restaurante.data.network
 
 import android.net.Uri
 import com.fjhidalgo.restaurante.data.model.product.ProductModel
-import com.fjhidalgo.restaurante.util.firebase.FirebaseCallback
-import com.fjhidalgo.restaurante.util.firebase.FirebaseCallbackDelete
-import com.fjhidalgo.restaurante.util.firebase.FirebaseCallbackUpdate
+import com.fjhidalgo.restaurante.data.model.user.UserModel
+import com.fjhidalgo.restaurante.util.firebase.*
 import java.net.URI
 
 interface ApiHelper {
@@ -15,4 +14,7 @@ interface ApiHelper {
     fun performDeleteDrink(id: String, typeDrink: String, linkImage: String, callback: FirebaseCallbackDelete)
     fun performUpdateFood(updateProduct: ProductModel, type: String, uri: Uri?, callback: FirebaseCallbackUpdate)
     fun performUpdateDrink(updateProduct: ProductModel, type: String, uri: Uri?, callback: FirebaseCallbackUpdate)
+
+    fun performCreateUser(email: String, password: String, userModel: UserModel, callback: FirebaseCallbackSignup)
+    fun performSigninUser(email: String, password: String, callback: FirebaseCallbackSignin)
 }

@@ -13,4 +13,5 @@ object AppConstants {
     const val MAIN_CHILD = "Restaurante"
     const val FOOD_CHILD = "Comida"
     const val DRINK_CHILD = "Bebida"
+    const val USER_CHILD = "Usuario"
 }

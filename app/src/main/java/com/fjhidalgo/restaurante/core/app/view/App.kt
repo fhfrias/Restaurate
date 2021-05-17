@@ -13,6 +13,7 @@ import com.fjhidalgo.restaurante.data.network.ApiHelperImpl
 import com.fjhidalgo.restaurante.data.preferences.PreferenceHelper
 import com.fjhidalgo.restaurante.data.preferences.PreferenceHelperImpl
 import com.google.firebase.FirebaseApp
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.ktx.Firebase
@@ -36,6 +37,7 @@ class App : MultiDexApplication(), AppView {
     private var firebaseDatabase: FirebaseDatabase? = null
     var databaseReference: DatabaseReference? = null
     var firebaseStorage: StorageReference? = null
+    var firebaseAuth: FirebaseAuth? = null
 
     private val presenter: AppPresenter<AppView, AppInteractor> by lazy {
         AppPresenterImpl<AppView, AppInteractor>(
@@ -96,6 +98,7 @@ class App : MultiDexApplication(), AppView {
         firebaseDatabase!!.setPersistenceEnabled(true)
         databaseReference = firebaseDatabase!!.reference
         firebaseStorage = FirebaseStorage.getInstance().reference
+        firebaseAuth = FirebaseAuth.getInstance()
     }
 
 }

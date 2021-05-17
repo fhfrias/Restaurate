@@ -75,4 +75,33 @@
     <string name="name_dialog_update">Nombre</string>
     <string name="price_dialog_update">Precio €</string>
     <string name="txt_img_update_dialog">Imagen asociada al producto</string>
+
+
+    //Login
+    <string name="txt_signup">REGISTRARME</string>
+    <string name="txt_login">INICIAR SESIÓN</string>
+    <string name="hint_pass_login">Contraseña</string>
+    <string name="hint_email_sigup">Email</string>
+    <string name="name_company_login">Bar - Restaurante</string>
+    <string name="login_no_valid_msg">Email o contraseña incorrecta</string>
+
+
+    //Splash
+    <string name="loading_splash">Cargando ...</string>
+
+    //Signup
+    <string name="email_sigup">Email</string>
+    <string name="name_sigup">Nombre</string>
+    <string name="surname_sigup">Apellido</string>
+    <string name="pass_signup">Contraseña</string>
+    <string name="repeat_pass_signup">Repetir Contraseña</string>
+    <string name="signup_title">Registrar Usuario</string>
+    <string name="txt_btn_signup">REGISTRAR</string>
+    <string name="txt_email_novalid">Email no válido</string>
+    <string name="txt_name_novalid">El nombre debe comprender entre 2-30 caracteres</string>
+    <string name="txt_surname_novalid">El apellido debe comprender entre 2-60 caracteres</string>
+    <string name="txt_pass_novalid">La contraseña no coincide o inferior a 6 caracteres</string>
+    <string name="signup_user_ok">Usuario creado correctamente</string>
+    <string name="signup_user_error">Error, no se ha podido crear el usuario</string>
+
 </resources>
