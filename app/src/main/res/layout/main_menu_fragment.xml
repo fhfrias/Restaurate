@@ -36,7 +36,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:text="Francisco Javier Hidalgo Frías"
+                android:text=""
                 android:textColor="#FFFFFF"
                 android:textSize="16dp"
                 android:textStyle="bold"

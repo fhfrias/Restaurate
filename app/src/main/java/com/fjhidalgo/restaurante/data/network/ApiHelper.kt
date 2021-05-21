@@ -17,4 +17,5 @@ interface ApiHelper {
 
     fun performCreateUser(email: String, password: String, userModel: UserModel, callback: FirebaseCallbackSignup)
     fun performSigninUser(email: String, password: String, callback: FirebaseCallbackSignin)
+    fun performGetDataUser(email: String, callback: FirebaseCallbackDataUser)
 }

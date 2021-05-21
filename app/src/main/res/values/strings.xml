@@ -1,6 +1,9 @@
 <resources>
     <string name="app_name">Bar - Restaurante</string>
 
+    //MainActivity
+    <string name="no_admin_msg">No eres administrador, no puedes utilizar esta función</string>
+
     //NavigatorDrawer
     <string name="drawer_open">drawer_open</string>
     <string name="drawer_close">drawer_close</string>
@@ -13,6 +16,7 @@
     <string name="organization">Organización</string>
     <string name="logout">Cerrar Sesión</string>
     <string name="menu_user">Usuarios</string>
+    <string name="close_session">Sesión cerrada</string>
 
 
     //Add Product
@@ -84,10 +88,11 @@
     <string name="hint_email_sigup">Email</string>
     <string name="name_company_login">Bar - Restaurante</string>
     <string name="login_no_valid_msg">Email o contraseña incorrecta</string>
-
+    <string name="must_complete_fields_login">Debes completar los campos email y contraseña</string>
 
     //Splash
     <string name="loading_splash">Cargando ...</string>
+    <string name="error_unknow_splash">Ups!! Ha ocurrido un error inesperado</string>
 
     //Signup
     <string name="email_sigup">Email</string>

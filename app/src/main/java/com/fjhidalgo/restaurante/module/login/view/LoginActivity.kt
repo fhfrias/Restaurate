@@ -14,6 +14,7 @@ import com.fjhidalgo.restaurante.module.login.presenter.LoginPresenter
 import com.fjhidalgo.restaurante.module.login.presenter.LoginPresenterImpl
 import com.fjhidalgo.restaurante.module.main.activity.view.MainActivity
 import com.fjhidalgo.restaurante.module.signup.view.SignupActivity
+import com.fjhidalgo.restaurante.module.splash.view.SplashActivity
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.textfield.TextInputEditText
 
@@ -27,6 +28,7 @@ class LoginActivity: AppCompatActivity(), LoginView {
     private var etPassword: TextInputEditText? = null
     private var btnLogin: MaterialButton? = null
     private var btnSignup: MaterialButton? = null
+    private var emailLogin: String? = null
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -51,8 +53,12 @@ class LoginActivity: AppCompatActivity(), LoginView {
         }
 
         btnLogin!!.setOnClickListener {
-            presenter!!.signinUser(etEmail!!.text.toString(), etPassword!!.text.toString())
-
+            if (etEmail!!.text.toString().equals("") || etPassword!!.text.toString().equals("")){
+                Toast.makeText(this, getString(R.string.must_complete_fields_login), Toast.LENGTH_LONG).show()
+            } else {
+                emailLogin = etEmail!!.text.toString()
+                presenter!!.signinUser(etEmail!!.text.toString(), etPassword!!.text.toString())
+            }
         }
     }
 
@@ -62,11 +68,14 @@ class LoginActivity: AppCompatActivity(), LoginView {
     }
 
     override fun okLogin() {
-        val intentMain = Intent(this, MainActivity::class.java)
+        val intentMain = Intent(this, SplashActivity::class.java)
+        intentMain.putExtra("email", emailLogin)
         startActivity(intentMain)
+        finish()
     }
 
     override fun errorLogin() {
+        emailLogin = null
         Toast.makeText(this, getString(R.string.login_no_valid_msg), Toast.LENGTH_LONG).show()
     }
 }

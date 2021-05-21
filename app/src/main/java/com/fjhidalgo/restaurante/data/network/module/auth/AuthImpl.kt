@@ -37,7 +37,7 @@ class AuthImpl: AuthInterface {
         App.instance.firebaseAuth!!.signInWithEmailAndPassword(email, password).addOnCompleteListener {
 
             if(it.isSuccessful){
-
+                it.result
                 callback.onResponse()
             } else {
 

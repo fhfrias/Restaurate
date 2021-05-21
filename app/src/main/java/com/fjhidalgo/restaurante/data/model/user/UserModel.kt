@@ -16,6 +16,8 @@ class UserModel {
         this.id = id
     }
 
+    constructor()
+
 
     override fun toString(): String {
         return "UserModel(email=$email, name=$name, surname=$surname, isAdmin=$isAdmin)"

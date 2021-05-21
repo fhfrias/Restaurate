@@ -1,6 +1,8 @@
 package com.fjhidalgo.restaurante.module.main.fragment.mainmenu.view
 
+import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,10 +14,14 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.fjhidalgo.restaurante.BuildConfig
 import com.fjhidalgo.restaurante.R
+import com.fjhidalgo.restaurante.core.app.view.App
 import com.fjhidalgo.restaurante.data.AppConstants
+import com.fjhidalgo.restaurante.data.model.user.UserModel
 import com.fjhidalgo.restaurante.data.network.ApiHelperImpl
 import com.fjhidalgo.restaurante.data.preferences.PreferenceHelperImpl
 import com.fjhidalgo.restaurante.module.base.view.BaseFragment
+import com.fjhidalgo.restaurante.module.login.view.LoginActivity
+import com.fjhidalgo.restaurante.module.main.activity.view.MainActivity
 import com.fjhidalgo.restaurante.module.main.fragment.mainmenu.adapter.MenuItemAdapter
 import com.fjhidalgo.restaurante.module.main.fragment.mainmenu.interactor.MainMenuFragmentInteractor
 import com.fjhidalgo.restaurante.module.main.fragment.mainmenu.interactor.MainMenuFragmentInteractorImpl
@@ -134,7 +140,14 @@ class MainMenuFragment : BaseFragment(), MainMenuFragmentView {
         tvInfoVersion?.text = "v.$versionName"
 
         linearLayoutLogout!!.setOnClickListener {
-            Toast.makeText(requireContext(), "Cerrar Sesión", Toast.LENGTH_LONG).show()
+            Toast.makeText(requireContext(), getString(R.string.close_session), Toast.LENGTH_LONG).show()
+            App.instance.firebaseAuth!!.signOut()
+            val intentLogin = Intent(requireContext(), LoginActivity::class.java)
+            startActivity(intentLogin)
+            requireActivity().finish()
         }
+
+        tvUsername!!.setText((requireActivity() as MainActivity).getNameSurnameUser())
     }
+
 }

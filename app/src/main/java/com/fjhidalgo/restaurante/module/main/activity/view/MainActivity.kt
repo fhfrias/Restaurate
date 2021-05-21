@@ -6,11 +6,15 @@ import android.os.Bundle
 import android.util.Log
 import android.view.MenuItem
 import android.view.View
+import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.drawerlayout.widget.DrawerLayout
 import com.fjhidalgo.restaurante.R
+import com.fjhidalgo.restaurante.core.app.view.App
+import com.fjhidalgo.restaurante.data.model.Auth
+import com.fjhidalgo.restaurante.data.model.user.UserModel
 import com.fjhidalgo.restaurante.module.base.view.BaseFragment
 import com.fjhidalgo.restaurante.module.main.fragment.mainmenu.view.MainMenuFragment
 import com.fjhidalgo.restaurante.module.menu.add_product.view.AddProductActivity
@@ -19,6 +23,7 @@ import com.fjhidalgo.restaurante.module.menu.update_product.view.UpdateProductAc
 import com.fjhidalgo.restaurante.ui.navigation.view.NavigationDrawerImpl
 import com.fjhidalgo.restaurante.ui.toolbar.CustomAppBarLayout
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.gson.Gson
 
 
 class MainActivity : AppCompatActivity() {
@@ -45,14 +50,26 @@ class MainActivity : AppCompatActivity() {
 
     private var fragment: BaseFragment? = null
 
+    var userData: UserModel = UserModel()
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-//
+
         setUpMenu()
         setUpAppBarLayout()
         setOnButtonNavigationItemSelectedListener()
+        loadDataUser(intent.extras!!)
+    }
 
+    private fun loadDataUser(extras: Bundle) {
+        userData.email  = extras.getString("email")
+        userData.name = extras.getString("name")
+        userData.surname = extras.getString("surname")
+        userData.isAdmin = extras.getBoolean("isAdmin")
+        userData.id = extras.getString("id")
+        Log.e("El usuario", userData.toString())
     }
 
     private fun setUpMenu() {
@@ -130,19 +147,37 @@ class MainActivity : AppCompatActivity() {
 
             }
             0 -> {
-                val i = Intent(this, AddProductActivity::class.java)
-                startActivity(i)
+                if (userData.isAdmin!!){
+                    val i = Intent(this, AddProductActivity::class.java)
+                    startActivity(i)
+                } else {
+                    showToastNoAdmin()
+                }
             }
             1 -> {
-                val i = Intent(this, DeleteProductActivity::class.java)
-                startActivity(i)
+                if (userData.isAdmin!!){
+                    val i = Intent(this, DeleteProductActivity::class.java)
+                    startActivity(i)
+                } else {
+                    showToastNoAdmin()
+                }
+
             }
             2 -> {
-                val i = Intent(this, UpdateProductActivity::class.java)
-                startActivity(i)
+                if (userData.isAdmin!!){
+                    val i = Intent(this, UpdateProductActivity::class.java)
+                    startActivity(i)
+                } else {
+                   showToastNoAdmin()
+                }
+
             }
             3 -> {
-                Log.e("Estamos", " En user")
+                if(userData.isAdmin!!){
+                    Log.e("Estamos", " En user")
+                } else {
+                    showToastNoAdmin()
+                }
             }
             4 -> {
 
@@ -186,6 +221,10 @@ class MainActivity : AppCompatActivity() {
 
     }
 
+    private fun showToastNoAdmin() {
+        Toast.makeText(this, getString(R.string.no_admin_msg), Toast.LENGTH_LONG).show()
+    }
+
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
 
         return when (item.itemId) {
@@ -222,4 +261,11 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    fun getNameSurnameUser(): String {
+        return userData.name + " " + userData.surname
+    }
+
+    fun isAdminUser(): Boolean {
+        return userData.isAdmin!!
+    }
 }

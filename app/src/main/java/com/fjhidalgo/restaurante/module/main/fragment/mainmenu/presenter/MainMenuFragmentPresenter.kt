@@ -4,5 +4,4 @@ import com.fjhidalgo.restaurante.module.base.presenter.BasePresenter
 
 interface MainMenuFragmentPresenter<V, I> : BasePresenter<V, I> {
 
-
 }

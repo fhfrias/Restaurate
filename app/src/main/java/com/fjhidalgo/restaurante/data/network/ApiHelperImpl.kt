@@ -5,6 +5,7 @@ import com.fjhidalgo.restaurante.data.model.product.ProductModel
 import com.fjhidalgo.restaurante.data.model.user.UserModel
 import com.fjhidalgo.restaurante.data.network.module.auth.AuthImpl
 import com.fjhidalgo.restaurante.data.network.module.product.ProductImpl
+import com.fjhidalgo.restaurante.data.network.module.user.UserImpl
 import com.fjhidalgo.restaurante.util.firebase.*
 import java.net.URI
 
@@ -48,5 +49,10 @@ class ApiHelperImpl : ApiHelper {
     override fun performSigninUser(email: String, password: String, callback: FirebaseCallbackSignin) {
         val authImpl: AuthImpl = AuthImpl()
         authImpl.signinUser(email, password, callback)
+    }
+
+    override fun performGetDataUser(email: String, callback: FirebaseCallbackDataUser) {
+        val userImpl = UserImpl()
+        userImpl.getDataUser(email, callback)
     }
 }

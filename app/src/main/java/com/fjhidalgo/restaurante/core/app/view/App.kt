@@ -8,6 +8,7 @@ import com.fjhidalgo.restaurante.core.app.interactor.AppInteractorImpl
 import com.fjhidalgo.restaurante.core.app.presenter.AppPresenter
 import com.fjhidalgo.restaurante.core.app.presenter.AppPresenterImpl
 import com.fjhidalgo.restaurante.data.model.Auth
+import com.fjhidalgo.restaurante.data.model.user.UserModel
 import com.fjhidalgo.restaurante.data.network.ApiHelper
 import com.fjhidalgo.restaurante.data.network.ApiHelperImpl
 import com.fjhidalgo.restaurante.data.preferences.PreferenceHelper
@@ -62,8 +63,6 @@ class App : MultiDexApplication(), AppView {
         ApiHelperImpl()
     }
 
-    //Podría ir el listado de los enseres aquí
-    //var customerInfo: CustomerResponse = CustomerResponse()
 
     override fun onCreate() {
         super.onCreate()
