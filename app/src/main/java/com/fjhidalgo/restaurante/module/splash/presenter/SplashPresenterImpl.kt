@@ -9,6 +9,7 @@ import com.fjhidalgo.restaurante.module.base.presenter.BasePresenterImpl
 import com.fjhidalgo.restaurante.module.splash.interactor.SplashInteractor
 import com.fjhidalgo.restaurante.module.splash.view.SplashView
 import com.fjhidalgo.restaurante.util.firebase.FirebaseCallbackDataUser
+import com.fjhidalgo.restaurante.util.firebase.FirebaseCallbackVersion
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 
@@ -48,4 +49,16 @@ class SplashPresenterImpl<V: SplashView, I: SplashInteractor>(interactor:I): Bas
         })
     }
 
+    override fun getVersion() {
+        interactor!!.getVersion(object : FirebaseCallbackVersion{
+
+            override fun onResponse(version: Int) {
+                getView()?.getVersionOK(version)
+            }
+
+            override fun onError() {
+                getView()?.getVersionError()
+            }
+        })
+    }
 }

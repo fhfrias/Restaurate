@@ -93,6 +93,8 @@
     //Splash
     <string name="loading_splash">Cargando ...</string>
     <string name="error_unknow_splash">Ups!! Ha ocurrido un error inesperado</string>
+    <string name="error_version_noget">Error, no se ha podido obtener la versión</string>
+    <string name="version_deprecated">Versión deprecada, app no disponible</string>
 
     //Signup
     <string name="email_sigup">Email</string>
@@ -115,5 +117,6 @@
     <string name="user_update_ok">Usuario actualizado con éxito</string>
     <string name="user_update_error">Error inesperado, no se ha podido actualizar</string>
     <string name="no_update_admin">No se puede modificar. Al menos debe haber un administrador</string>
+
 
 </resources>

@@ -6,4 +6,6 @@ import com.fjhidalgo.restaurante.module.base.view.BaseView
 interface SplashView: BaseView {
     fun gottenDataUser(userModel: UserModel)
     fun errorDataUser()
+    fun getVersionOK(version: Int)
+    fun getVersionError()
 }

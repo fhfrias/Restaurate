@@ -60,4 +60,9 @@ class ApiHelperImpl : ApiHelper {
         val userImpl = UserImpl()
         userImpl.updateIsAdminUser(id, isAdmin, callback)
     }
+
+    override fun perfomGetVersion(callback: FirebaseCallbackVersion) {
+        val userImpl = UserImpl()
+        userImpl.getVersion(callback)
+    }
 }

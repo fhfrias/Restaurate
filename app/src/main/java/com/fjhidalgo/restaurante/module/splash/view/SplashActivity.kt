@@ -1,7 +1,8 @@
 package com.fjhidalgo.restaurante.module.splash.view
 
 import android.content.Intent
-import android.content.SharedPreferences
+import android.content.pm.PackageInfo
+import android.content.pm.PackageManager
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
@@ -17,10 +18,6 @@ import com.fjhidalgo.restaurante.module.splash.interactor.SplashInteractor
 import com.fjhidalgo.restaurante.module.splash.interactor.SplashInteractorImpl
 import com.fjhidalgo.restaurante.module.splash.presenter.SplashPresenter
 import com.fjhidalgo.restaurante.module.splash.presenter.SplashPresenterImpl
-import com.google.gson.Gson
-
-
-
 
 
 class SplashActivity: AppCompatActivity(), SplashView {
@@ -29,20 +26,21 @@ class SplashActivity: AppCompatActivity(), SplashView {
         SplashPresenterImpl(SplashInteractorImpl(PreferenceHelperImpl(this, AppConstants.PREF_NAME), ApiHelperImpl()))
     }
 
+    var extras: Bundle? = null
+    var email: String? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.splash_activity)
         presenter.onAttach(this)
 
-        val extras = intent.extras
-        var email: String? = null
+        extras = intent.extras
 
         if (extras == null){
             goToLogin()
             finish()
         } else {
-            email = extras!!.getString("email", "")
-            presenter.getDataUser(email)
+            presenter.getVersion()
         }
 
     }
@@ -77,6 +75,29 @@ class SplashActivity: AppCompatActivity(), SplashView {
     override fun errorDataUser() {
         Toast.makeText(this, getString(R.string.error_unknow_splash), Toast.LENGTH_LONG).show()
         goToLogin()
+        finish()
+    }
+
+    override fun getVersionOK(version: Int) {
+        var versionCode = 0
+        try {
+            val pInfo: PackageInfo =
+                getPackageManager().getPackageInfo(getPackageName(), 0)
+             versionCode = pInfo.versionCode
+        } catch (e: PackageManager.NameNotFoundException) {
+            e.printStackTrace()
+        }
+        if (versionCode >= version){
+            email = extras!!.getString("email", "")
+            presenter.getDataUser(email!!)
+        } else {
+            Toast.makeText(this, getString(R.string.version_deprecated), Toast.LENGTH_LONG).show()
+            finish()
+        }
+    }
+
+    override fun getVersionError() {
+        Toast.makeText(this, getString(R.string.error_version_noget), Toast.LENGTH_LONG).show()
         finish()
     }
 }

@@ -5,6 +5,7 @@ import com.fjhidalgo.restaurante.core.app.view.App
 import com.fjhidalgo.restaurante.data.AppConstants
 import com.fjhidalgo.restaurante.util.firebase.FirebaseCallbackDataUser
 import com.fjhidalgo.restaurante.util.firebase.FirebaseCallbackUpdate
+import com.fjhidalgo.restaurante.util.firebase.FirebaseCallbackVersion
 import com.google.firebase.database.*
 
 class UserImpl: UserInterface {
@@ -31,5 +32,15 @@ class UserImpl: UserInterface {
             .addOnCanceledListener {
                 callback.onError()
             }
+    }
+
+    override fun getVersion(callbackVersion: FirebaseCallbackVersion) {
+        App.instance.databaseReference!!.child(AppConstants.MAIN_CHILD).child(AppConstants.VERSION_CHILD).get().addOnCompleteListener { task ->
+            if (task.isSuccessful){
+                callbackVersion.onResponse(task.result!!.value.toString().toInt())
+            } else {
+                callbackVersion.onError()
+            }
+        }
     }
 }
