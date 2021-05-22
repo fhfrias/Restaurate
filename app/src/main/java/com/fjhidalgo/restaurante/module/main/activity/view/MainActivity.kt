@@ -20,6 +20,7 @@ import com.fjhidalgo.restaurante.module.main.fragment.mainmenu.view.MainMenuFrag
 import com.fjhidalgo.restaurante.module.menu.add_product.view.AddProductActivity
 import com.fjhidalgo.restaurante.module.menu.delete_product.view.DeleteProductActivity
 import com.fjhidalgo.restaurante.module.menu.update_product.view.UpdateProductActivity
+import com.fjhidalgo.restaurante.module.menu.users.view.UsersActivity
 import com.fjhidalgo.restaurante.ui.navigation.view.NavigationDrawerImpl
 import com.fjhidalgo.restaurante.ui.toolbar.CustomAppBarLayout
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -69,7 +70,6 @@ class MainActivity : AppCompatActivity() {
         userData.surname = extras.getString("surname")
         userData.isAdmin = extras.getBoolean("isAdmin")
         userData.id = extras.getString("id")
-        Log.e("El usuario", userData.toString())
     }
 
     private fun setUpMenu() {
@@ -174,7 +174,8 @@ class MainActivity : AppCompatActivity() {
             }
             3 -> {
                 if(userData.isAdmin!!){
-                    Log.e("Estamos", " En user")
+                    val i = Intent(this, UsersActivity::class.java)
+                    startActivity(i)
                 } else {
                     showToastNoAdmin()
                 }

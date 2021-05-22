@@ -109,4 +109,11 @@
     <string name="signup_user_ok">Usuario creado correctamente</string>
     <string name="signup_user_error">Error, no se ha podido crear el usuario</string>
 
+    //Users
+    <string name="error_load_users">Error, no se han podido cargar los usuarios</string>
+    <string name="list_of_users">Lista de usuarios</string>
+    <string name="user_update_ok">Usuario actualizado con éxito</string>
+    <string name="user_update_error">Error inesperado, no se ha podido actualizar</string>
+    <string name="no_update_admin">No se puede modificar. Al menos debe haber un administrador</string>
+
 </resources>

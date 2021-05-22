@@ -55,4 +55,9 @@ class ApiHelperImpl : ApiHelper {
         val userImpl = UserImpl()
         userImpl.getDataUser(email, callback)
     }
+
+    override fun performUpdateIsAdmin(id: String, isAdmin: Boolean, callback: FirebaseCallbackUpdate) {
+        val userImpl = UserImpl()
+        userImpl.updateIsAdminUser(id, isAdmin, callback)
+    }
 }

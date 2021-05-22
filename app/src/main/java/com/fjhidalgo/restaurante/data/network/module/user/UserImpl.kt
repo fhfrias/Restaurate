@@ -4,6 +4,7 @@ import android.util.Log
 import com.fjhidalgo.restaurante.core.app.view.App
 import com.fjhidalgo.restaurante.data.AppConstants
 import com.fjhidalgo.restaurante.util.firebase.FirebaseCallbackDataUser
+import com.fjhidalgo.restaurante.util.firebase.FirebaseCallbackUpdate
 import com.google.firebase.database.*
 
 class UserImpl: UserInterface {
@@ -20,5 +21,15 @@ class UserImpl: UserInterface {
                 callback.onError()
             }
         }
+    }
+
+    override fun updateIsAdminUser(id: String, isAdmin: Boolean, callback: FirebaseCallbackUpdate) {
+
+        App.instance.databaseReference!!.child(AppConstants.MAIN_CHILD).child(AppConstants.USER_CHILD).child(id).child("admin").setValue(isAdmin).addOnCompleteListener {
+            callback.onResponse()
+        }
+            .addOnCanceledListener {
+                callback.onError()
+            }
     }
 }
