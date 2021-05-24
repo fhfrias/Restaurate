@@ -113,6 +113,50 @@
             android:padding="16dp"
             android:text="@string/txt_signup"/>
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:autoLink="web|all"
+            android:gravity="center"
+            android:text="@string/forgot_password1"
+            android:textColor="@color/white"
+            android:textColorLink="@color/white"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clipChildren="false"
+            android:clipToPadding="false"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:autoLink="web|all"
+                android:gravity="center"
+                android:text="@string/forgot_password2"
+                android:textColor="@color/white"
+                android:textColorLink="@color/white"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvForgotPassword"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:autoLink="web|all"
+                android:gravity="center"
+                android:text="@string/forgot_password3"
+                android:textColor="@color/white"
+                android:textColorLink="@color/white"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
 
     </LinearLayout>
 

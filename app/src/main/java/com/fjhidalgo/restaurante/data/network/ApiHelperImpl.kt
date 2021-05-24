@@ -65,4 +65,9 @@ class ApiHelperImpl : ApiHelper {
         val userImpl = UserImpl()
         userImpl.getVersion(callback)
     }
+
+    override fun performRecoryPass(email: String, callback: FirebaseCallbackRecoveryPass) {
+        val userImpl = UserImpl()
+        userImpl.recoveryPass(email, callback)
+    }
 }

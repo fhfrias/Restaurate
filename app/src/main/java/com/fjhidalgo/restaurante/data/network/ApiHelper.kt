@@ -20,4 +20,5 @@ interface ApiHelper {
     fun performGetDataUser(email: String, callback: FirebaseCallbackDataUser)
     fun performUpdateIsAdmin(id: String, isAdmin: Boolean, callback: FirebaseCallbackUpdate)
     fun perfomGetVersion(callback: FirebaseCallbackVersion)
+    fun performRecoryPass(email: String, callback: FirebaseCallbackRecoveryPass)
 }

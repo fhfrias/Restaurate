@@ -89,6 +89,9 @@
     <string name="name_company_login">Bar - Restaurante</string>
     <string name="login_no_valid_msg">Email o contraseña incorrecta</string>
     <string name="must_complete_fields_login">Debes completar los campos email y contraseña</string>
+    <string name="forgot_password1">¿Has olvidado la contraseña?</string>
+    <string name="forgot_password2">Haz</string>
+    <string name="forgot_password3">&#160;<a href="#">click aquí</a></string>
 
     //Splash
     <string name="loading_splash">Cargando ...</string>
@@ -118,5 +121,13 @@
     <string name="user_update_error">Error inesperado, no se ha podido actualizar</string>
     <string name="no_update_admin">No se puede modificar. Al menos debe haber un administrador</string>
 
+    //Recorved Pass
+    <string name="email_recorvedpass">Email</string>
+    <string name="recovery_password_message">Introduzca el correo electrónico con el que se registró para proporcionarle una nueva contraseña.</string>
+    <string name="recorved_btn">Recuperar</string>
+    <string name="recorved_title">Recuperar contraseña</string>
+    <string name="email_no_valid_msg">Email no válido</string>
+    <string name="recovery_pass_ok">Email enviado para el cambio de contraseña</string>
+    <string name="recovery_pass_error">Error: no se ha podido mandar el email para el cambio de contraseña</string>
 
 </resources>

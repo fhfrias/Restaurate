@@ -32,6 +32,7 @@
         <activity android:name=".module.signup.view.SignupActivity" android:screenOrientation="portrait"/>
         <activity android:name=".module.main.activity.view.MainActivity" android:screenOrientation="portrait"/>
         <activity android:name=".module.menu.users.view.UsersActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".module.recorved_password.view.RecorvedPassActivity" android:screenOrientation="portrait"/>
     </application>
 
     <queries>

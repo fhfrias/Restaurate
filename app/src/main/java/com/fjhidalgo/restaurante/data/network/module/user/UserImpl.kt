@@ -4,6 +4,7 @@ import android.util.Log
 import com.fjhidalgo.restaurante.core.app.view.App
 import com.fjhidalgo.restaurante.data.AppConstants
 import com.fjhidalgo.restaurante.util.firebase.FirebaseCallbackDataUser
+import com.fjhidalgo.restaurante.util.firebase.FirebaseCallbackRecoveryPass
 import com.fjhidalgo.restaurante.util.firebase.FirebaseCallbackUpdate
 import com.fjhidalgo.restaurante.util.firebase.FirebaseCallbackVersion
 import com.google.firebase.database.*
@@ -40,6 +41,22 @@ class UserImpl: UserInterface {
                 callbackVersion.onResponse(task.result!!.value.toString().toInt())
             } else {
                 callbackVersion.onError()
+            }
+        }
+    }
+
+    override fun recoveryPass(email: String, callback: FirebaseCallbackRecoveryPass) {
+
+        App.instance.firebaseAuth!!.sendPasswordResetEmail(email).addOnCompleteListener {
+
+            if (it.isSuccessful){
+
+                callback.onResponse()
+
+            } else {
+
+                callback.onError()
+
             }
         }
     }
