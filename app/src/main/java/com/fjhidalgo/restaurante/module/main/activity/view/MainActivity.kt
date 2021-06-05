@@ -21,6 +21,9 @@ import com.fjhidalgo.restaurante.module.menu.add_product.view.AddProductActivity
 import com.fjhidalgo.restaurante.module.menu.delete_product.view.DeleteProductActivity
 import com.fjhidalgo.restaurante.module.menu.update_product.view.UpdateProductActivity
 import com.fjhidalgo.restaurante.module.menu.users.view.UsersActivity
+import com.fjhidalgo.restaurante.module.ubic.bar.fragment.view.BarFragment
+import com.fjhidalgo.restaurante.module.ubic.indoor.fragment.view.IndoorFragment
+import com.fjhidalgo.restaurante.module.ubic.outdoor.fragment.view.OutdoorFragment
 import com.fjhidalgo.restaurante.ui.navigation.view.NavigationDrawerImpl
 import com.fjhidalgo.restaurante.ui.toolbar.CustomAppBarLayout
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -62,6 +65,7 @@ class MainActivity : AppCompatActivity() {
         setUpAppBarLayout()
         setOnButtonNavigationItemSelectedListener()
         loadDataUser(intent.extras!!)
+        displayView(R.id.mnuIndoor)
     }
 
     private fun loadDataUser(extras: Bundle) {
@@ -138,13 +142,13 @@ class MainActivity : AppCompatActivity() {
         when (position) {
 
             R.id.mnuIndoor -> {
-
+                fragment = IndoorFragment()
             }
             R.id.mnuOutdoor -> {
-
+                fragment = OutdoorFragment()
             }
             R.id.mnuBarra -> {
-
+                fragment = BarFragment()
             }
             0 -> {
                 if (userData.isAdmin!!){

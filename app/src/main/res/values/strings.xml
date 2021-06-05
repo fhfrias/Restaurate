@@ -130,4 +130,12 @@
     <string name="recovery_pass_ok">Email enviado para el cambio de contraseña</string>
     <string name="recovery_pass_error">Error: no se ha podido mandar el email para el cambio de contraseña</string>
 
+    //UBIC
+    <string name="add_table_ok">Mesa añadida correctamente</string>
+    <string name="add_table_error">No se ha podido añadir la mesa</string>
+    <string name="can_not_add_table">No se pueden añadir más mesas</string>
+    <string name="nothing_delete_table">No hay mesas para borrar</string>
+    <string name="ok_delete_table">Mesa eliminada correctamente</string>
+    <string name="no_delete_table">No se ha podido eliminar la mesa</string>
+
 </resources>

@@ -2,6 +2,7 @@ package com.fjhidalgo.restaurante.data.network
 
 import android.net.Uri
 import com.fjhidalgo.restaurante.data.model.product.ProductModel
+import com.fjhidalgo.restaurante.data.model.table.TableModel
 import com.fjhidalgo.restaurante.data.model.user.UserModel
 import com.fjhidalgo.restaurante.util.firebase.*
 import java.net.URI
@@ -21,4 +22,8 @@ interface ApiHelper {
     fun performUpdateIsAdmin(id: String, isAdmin: Boolean, callback: FirebaseCallbackUpdate)
     fun perfomGetVersion(callback: FirebaseCallbackVersion)
     fun performRecoryPass(email: String, callback: FirebaseCallbackRecoveryPass)
+
+    fun performAddTable(newTable: TableModel, type: String, callbackAddDeleteTable: FirebaseCallbackAddDeleteTable)
+    fun performDeleteTable(numberTable: String, type: String, callbackAddDeleteTable: FirebaseCallbackAddDeleteTable)
+    fun performGetTables(type: String, callback: FirebaseCallback)
 }

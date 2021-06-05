@@ -15,4 +15,8 @@ object AppConstants {
     const val DRINK_CHILD = "Bebida"
     const val USER_CHILD = "Usuario"
     const val VERSION_CHILD = "Version"
+    const val UBIC =  "Ubic"
+    const val INDOOR = "Indoor"
+    const val OUTDOOR = "Outdoor"
+    const val BAR = "Bar"
 }
