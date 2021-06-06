@@ -11,7 +11,7 @@ import com.fjhidalgo.restaurante.data.model.table.TableModel
 import com.fjhidalgo.restaurante.module.ubic.viewholder.ViewholderBar
 
 class AdapterBar (private val context: Context,
-                  private val layoutInflater: LayoutInflater, internal var tableList: List<TableModel>, internal var activity: FragmentActivity
+                  private val layoutInflater: LayoutInflater, internal var tableList: List<TableModel>, internal var activity: FragmentActivity, var type: String
 ) : RecyclerView.Adapter<ViewholderBar>() {
 
     private var lastPosition = -1
@@ -28,7 +28,7 @@ class AdapterBar (private val context: Context,
 
     override fun onBindViewHolder(holder: ViewholderBar, position: Int) {
 
-        holder.bind(context, tableList[position], position, activity)
+        holder.bind(context, tableList[position], position, activity, type)
     }
 
     override fun getItemCount(): Int {

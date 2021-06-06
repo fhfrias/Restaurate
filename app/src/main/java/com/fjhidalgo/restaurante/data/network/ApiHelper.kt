@@ -26,4 +26,6 @@ interface ApiHelper {
     fun performAddTable(newTable: TableModel, type: String, callbackAddDeleteTable: FirebaseCallbackAddDeleteTable)
     fun performDeleteTable(numberTable: String, type: String, callbackAddDeleteTable: FirebaseCallbackAddDeleteTable)
     fun performGetTables(type: String, callback: FirebaseCallback)
+    fun performUpdateTable(tableModel: TableModel, typeTable: String, callbackNote: FirebaseCallbackNote)
+    fun performGetTableIngo(idTable:String, typeTable: String, callback: FirebaseCallbackInfoTable)
 }

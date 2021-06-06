@@ -95,4 +95,18 @@ class ApiHelperImpl : ApiHelper {
         val tableImpl = TableImpl()
         tableImpl.getTables(type, callback)
     }
+
+    override fun performUpdateTable(tableModel: TableModel, typeTable: String, callbackNote: FirebaseCallbackNote) {
+        val tableImpl = TableImpl()
+        tableImpl.updateTable(tableModel, typeTable, callbackNote)
+    }
+
+    override fun performGetTableIngo(
+        idTable: String,
+        typeTable: String,
+        callback: FirebaseCallbackInfoTable
+    ) {
+        val tableImpl = TableImpl()
+        tableImpl.getInfoTable(idTable, typeTable, callback)
+    }
 }

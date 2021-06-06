@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.fjhidalgo.restaurante.R
 import com.fjhidalgo.restaurante.data.AppConstants
+import com.fjhidalgo.restaurante.data.model.bill.BillModel
 import com.fjhidalgo.restaurante.data.model.table.TableModel
 import com.fjhidalgo.restaurante.data.network.ApiHelperImpl
 import com.fjhidalgo.restaurante.data.preferences.PreferenceHelperImpl
@@ -72,7 +73,8 @@ class IndoorFragment: BaseFragment(), IndoorView {
             if (tableList.size >= 30){
                 Toast.makeText(requireContext(), getString(R.string.can_not_add_table), Toast.LENGTH_LONG).show()
             } else {
-                val newTable = TableModel("Mesa " + tableList.size, tableList.size.toString())
+                val billList = ArrayList<BillModel>()
+                val newTable = TableModel("Mesa " + tableList.size, tableList.size.toString(), billList)
                 presenter!!.addTableIndoor(newTable, AppConstants.INDOOR)
             }
         }
@@ -106,7 +108,7 @@ class IndoorFragment: BaseFragment(), IndoorView {
     private fun setAdapter() {
 
 
-        adapterBar = AdapterBar(requireContext(), layoutInflater, tableList!!, requireActivity())
+        adapterBar = AdapterBar(requireContext(), layoutInflater, tableList!!, requireActivity(), AppConstants.INDOOR)
         recyclerView?.adapter = adapterBar
         adapterBar?.notifyDataSetChanged()
 

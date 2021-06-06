@@ -138,4 +138,23 @@
     <string name="ok_delete_table">Mesa eliminada correctamente</string>
     <string name="no_delete_table">No se ha podido eliminar la mesa</string>
 
+    //BILL
+    <string name="attend_bill">Le atendió:</string>
+    <string name="total_bill">Total:</string>
+    <string name="amount_btn_bill">CUENTA</string>
+    <string name="payed_btn_bill">PAGADO</string>
+    <string name="product_bill">Producto</string>
+    <string name="amount_tv_bill">Cantidad</string>
+    <string name="price_unity_bill">Precio/U</string>
+    <string name="total_tv_bill">Total</string>
+    <string name="food_bill">COMIDA</string>
+    <string name="drink_bill">BEBIDA</string>
+    <string name="no_get_selected">No se ha podido obtener lo seleccionado</string>
+    <string name="note_add_okk">Nota añadida</string>
+    <string name="add_note_ok">Nota añadida</string>
+    <string name="no_add_note">No se ha podido añadir la nota</string>
+    <string name="no_info_table">No se ha podido obtener la información de la mesa</string>
+    <string name="error_payment_bill">Error al proceder pago</string>
+    <string name="payment_ok">Pago realizado</string>
+
 </resources>

@@ -7,6 +7,8 @@ import com.fjhidalgo.restaurante.data.AppConstants
 import com.fjhidalgo.restaurante.data.model.table.TableModel
 import com.fjhidalgo.restaurante.util.firebase.FirebaseCallback
 import com.fjhidalgo.restaurante.util.firebase.FirebaseCallbackAddDeleteTable
+import com.fjhidalgo.restaurante.util.firebase.FirebaseCallbackInfoTable
+import com.fjhidalgo.restaurante.util.firebase.FirebaseCallbackNote
 
 class TableImpl: TableInterface {
 
@@ -52,6 +54,35 @@ class TableImpl: TableInterface {
 
             } else {
                 callback.onError(task)
+            }
+        }
+    }
+
+    override fun updateTable(tableModel: TableModel, typeTable: String, callback: FirebaseCallbackNote) {
+        refTable.child(typeTable).child(tableModel.id.toString()).setValue(tableModel).addOnCompleteListener {
+            if(it.isSuccessful){
+                callback.onResponse()
+            } else {
+                callback.onError()
+            }
+        }
+            .addOnCanceledListener {
+                callback.onError()
+            }
+    }
+
+    override fun getInfoTable(
+        idTable: String,
+        typeTable: String,
+        callback: FirebaseCallbackInfoTable
+    ) {
+        refTable.child(typeTable).child(idTable).get().addOnCompleteListener { task ->
+            if(task.isSuccessful){
+
+                callback.onResponse(task.result!!)
+
+            } else {
+                callback.onError()
             }
         }
     }
