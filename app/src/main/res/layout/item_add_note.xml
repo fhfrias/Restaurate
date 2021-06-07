@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/materialCardView"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="100dp"
     android:clickable="true"
     android:focusable="true"
     android:foreground="?android:attr/selectableItemBackground"
@@ -21,6 +21,27 @@
         android:padding="8dp"
         android:paddingStart="12dp">
 
+        <androidx.cardview.widget.CardView
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:elevation="12dp"
+            app:cardCornerRadius="40dp"
+            android:layout_gravity="center"
+            android:layout_centerHorizontal="true"
+            android:innerRadius="0dp"
+            android:shape="ring"
+            android:thicknessRatio="1.9">
+
+            <ImageView
+                android:layout_height="match_parent"
+                android:layout_width="match_parent"
+                android:id="@+id/imgProduct"
+                android:src="@drawable/ic_logo_food_drink"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true">
+            </ImageView>
+
+        </androidx.cardview.widget.CardView>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -37,6 +58,7 @@
                 android:text="Bocadillo de Lomo"
                 android:gravity="center"
                 android:textStyle="bold"
+                android:textSize="13dp"
                 android:textColor="@color/black"
                 android:fontFamily="@font/sf_ui_text_regular"/>
 
@@ -47,45 +69,49 @@
                 android:text="Precio: 5€"
                 android:gravity="center"
                 android:textStyle="bold"
+                android:textSize="12dp"
                 android:textColor="@color/black"
                 android:fontFamily="@font/sf_ui_text_regular"/>
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:layout_marginTop="4dp"
+                android:gravity="center">
+
+                <ImageButton
+                    android:id="@+id/btn_add"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_margin="4dp"
+                    android:src="@drawable/ic_add_white"
+                    android:background="@color/primaryColor"/>
+
+                <TextView
+                    android:id="@+id/amount_product"
+                    android:layout_width="30dp"
+                    android:layout_height="match_parent"
+                    android:text="0"
+                    android:gravity="center"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
+                    android:textSize="15dp"
+                    android:background="@color/browser_actions_bg_grey"/>
+
+                <ImageButton
+                    android:id="@+id/btn_rest"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_margin="4dp"
+                    android:src="@drawable/ic_rest"
+                    android:background="@color/redLow"/>
+
+            </LinearLayout>
+
         </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal"
-            android:layout_weight="1"
-            android:gravity="center">
 
-            <ImageButton
-                android:id="@+id/btn_add"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_margin="4dp"
-                android:src="@drawable/ic_add_white"
-                android:background="@drawable/rounded_background_primary_color"/>
-
-            <TextView
-                android:id="@+id/amount_product"
-                android:layout_width="30dp"
-                android:layout_height="wrap_content"
-                android:text="0"
-                android:gravity="center"
-                android:textColor="@color/black"
-                android:textStyle="bold"
-                android:textSize="15dp"/>
-
-            <ImageButton
-                android:id="@+id/btn_rest"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_margin="4dp"
-                android:src="@drawable/ic_rest"
-                android:background="@drawable/rounded_background_red"/>
-
-        </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -99,7 +125,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_margin="4dp"
-                android:src="@drawable/ic_add_white"
+                android:src="@drawable/ic_check_white"
                 android:background="@drawable/rounded_background_blue"/>
         </LinearLayout>
 

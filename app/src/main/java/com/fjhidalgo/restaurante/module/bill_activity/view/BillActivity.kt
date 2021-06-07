@@ -57,6 +57,7 @@ class BillActivity: AppCompatActivity(), BillView {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.bill_activity)
+
         presenter.onAttach(this)
 
         val extras = intent.extras
@@ -73,6 +74,8 @@ class BillActivity: AppCompatActivity(), BillView {
     }
 
     private fun initView(){
+
+
         appBarLayout = findViewById(R.id.appPartnerBarLayout)
         recyclerView = findViewById(R.id.recyclerView)
         ll_attend_total = findViewById(R.id.ll_attend_total)

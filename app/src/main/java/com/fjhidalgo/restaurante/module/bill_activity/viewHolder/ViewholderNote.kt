@@ -4,12 +4,14 @@ import android.content.Context
 import android.content.Intent
 import android.view.View
 import android.widget.ImageButton
+import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.cardview.widget.CardView
 import androidx.fragment.app.FragmentActivity
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.fjhidalgo.restaurante.R
 import com.fjhidalgo.restaurante.data.AppConstants
 import com.fjhidalgo.restaurante.data.model.bill.BillModel
@@ -38,6 +40,11 @@ class ViewholderNote (itemView: View) : RecyclerView.ViewHolder(itemView) {
         itemView.findViewById<ImageButton>(R.id.btn_addNote)
     }
 
+    private val imgProduct: ImageView by lazy {
+        itemView.findViewById<ImageView>(R.id.imgProduct)
+    }
+
+
     fun bind(context: Context, item: ProductModel, position: Int, activity: FragmentActivity, type: String) {
 
         tv_name.setText(item.name)
@@ -61,6 +68,10 @@ class ViewholderNote (itemView: View) : RecyclerView.ViewHolder(itemView) {
         btn_addNote.setOnClickListener {
             (activity as BillActivity).addNoteToBill(item, amount_product.text.toString().toInt(), type)
             amount_product.setText("0")
+        }
+
+        if ( !item.linkImage.equals("null")){
+            Glide.with(activity).load(item.linkImage).into(imgProduct)
         }
     }
 }
