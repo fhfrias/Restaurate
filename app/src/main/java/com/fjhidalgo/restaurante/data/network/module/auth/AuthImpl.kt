@@ -13,11 +13,9 @@ class AuthImpl: AuthInterface {
         App.instance.firebaseAuth!!.createUserWithEmailAndPassword(email, password).addOnCompleteListener {
 
             if(it.isSuccessful){
-                Log.e("Vamos a ver", "Nos vamos al createUserDataBase")
                 createUserDataBase(userModel, callback)
 
             } else {
-                Log.e("Error", "Antes de lo esperado")
                 callback.onError()
             }
         }
@@ -26,14 +24,9 @@ class AuthImpl: AuthInterface {
     override fun createUserDataBase(userModel: UserModel, callback: FirebaseCallbackSignup) {
         App.instance.databaseReference!!.child(AppConstants.MAIN_CHILD).child(AppConstants.USER_CHILD).child(userModel.id!!).setValue(userModel).addOnCompleteListener {
 
-            Log.e("El user DB", userModel.toString())
-            Log.e("El id DB", userModel.id.toString())
             if (it.isSuccessful){
-                Log.e("DataBase", "Correct")
                 callback.onResponse()
             } else {
-                Log.e("DataBase", "ERROR")
-                Log.e("El error", it.exception.toString())
                 callback.onError()
             }
         }

@@ -99,7 +99,7 @@ class BillActivity: AppCompatActivity(), BillView {
         }
 
         btn_payed!!.setOnClickListener {
-
+            //PdfUtils.stringtopdf("Esto es una prueba", this)
             listBill = ArrayList<BillModel>()
             presenter!!.payTable(TableModel(nameTable, idTable, listBill), typeTable)
         }

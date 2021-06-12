@@ -38,6 +38,8 @@ class DeleteProductViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView
         }
         if ( !item.linkImage.equals("null")){
             Glide.with(activity).load(item.linkImage).into(cirImgProduct)
+        } else {
+            Glide.with(activity).load(activity.resources.getDrawable(R.drawable.ic_logo_food_drink)).into(cirImgProduct)
         }
     }
 }
