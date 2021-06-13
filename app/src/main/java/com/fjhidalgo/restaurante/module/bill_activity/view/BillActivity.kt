@@ -1,6 +1,8 @@
 package com.fjhidalgo.restaurante.module.bill_activity.view
 
 import android.os.Bundle
+import android.os.Environment
+import android.util.Log
 import android.view.MenuItem
 import android.view.View
 import android.widget.LinearLayout
@@ -27,6 +29,9 @@ import com.fjhidalgo.restaurante.ui.dialog.AddNoteDrinkDialog
 import com.fjhidalgo.restaurante.ui.dialog.AddNoteFoodDialog
 import com.fjhidalgo.restaurante.ui.toolbar.CustomAppBarLayout
 import com.google.android.material.button.MaterialButton
+import java.io.File
+import java.util.*
+import kotlin.collections.ArrayList
 
 class BillActivity: AppCompatActivity(), BillView {
 
@@ -96,6 +101,7 @@ class BillActivity: AppCompatActivity(), BillView {
             btn_drink!!.isEnabled = false
             btn_food!!.isEnabled = false
             nameBarman!!.setText(userName)
+            writeBill()
         }
 
         btn_payed!!.setOnClickListener {
@@ -246,5 +252,66 @@ class BillActivity: AppCompatActivity(), BillView {
     override fun onDestroy() {
         super.onDestroy()
         presenter.onDetach()
+    }
+
+    fun writeBill() {
+
+        val billFile = File(getExternalFilesDir(Environment.DIRECTORY_DOCUMENTS)!!.absolutePath, "bill.txt")
+        billFile.printWriter().use { out ->
+            out.println("---------------------------- Restaurante ----------------------------") //nameRestaurant
+            out.println("\n")
+            out.println("\n")
+            out.println("\n")
+            out.println("Producto     Cantidad   Precio/U      Total")
+            out.println("-----------------------------------------------------------------------------")
+            out.println("\n")
+            for(bill in listBill){
+
+                var nameProduct = ""
+                var lengthName = bill.name!!.length
+                if ( bill.name!!.length > 10){
+                     nameProduct = bill.name!!.substring(0, 9)
+                    for(i in 0..(nameProduct.length - 1)){
+                        if(nameProduct.get(i).toLowerCase().equals('l')){
+                            nameProduct = nameProduct + " "
+                        }
+                    }
+                } else {
+                    var space = 10 - lengthName
+                    nameProduct = bill.name!!
+                    for(i in 1..space){
+                        nameProduct = nameProduct + " "
+                    }
+                    for(i in 0..(nameProduct.length - 1)){
+                        if(nameProduct.get(i).toLowerCase().equals('l')){
+                            nameProduct = nameProduct + " "
+                        }
+                    }
+                }
+                var total = bill.amount!!.toDouble() * bill.price!!
+                out.println(nameProduct + "       " + bill.amount + "        " + bill.price + "       " + total)
+
+            }
+            out.println("\n")
+            out.println("\n")
+            out.println("\n")
+            out.println("Le atendio: " + userName)
+            var totalBill = calculateTotal()
+            out.println("TOTAL = " + totalBill + " EUR")
+            val calendar = Calendar.getInstance()
+            var day = calendar.get(Calendar.DAY_OF_MONTH).toString()
+            if (day.length == 1){
+                day = "0" + day
+            }
+            var month = (calendar.get(Calendar.MONTH) + 1).toString()
+            if (month.length == 1){
+                month = "0" + month
+            }
+            val year = calendar.get(Calendar.YEAR)
+            out.println("\n")
+            out.println("\n")
+            out.println("\n")
+            out.println("Fecha : " + day + "/" + month + "/" + year)
+        }
     }
 }
