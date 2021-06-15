@@ -1,5 +1,7 @@
 package com.fjhidalgo.restaurante.module.bill_activity.view
 
+import android.Manifest
+import android.content.pm.PackageManager
 import android.os.Bundle
 import android.os.Environment
 import android.util.Log
@@ -9,6 +11,8 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.DialogFragment
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -54,6 +58,8 @@ class BillActivity: AppCompatActivity(), BillView {
     private var btn_food: MaterialButton? = null
     private var btn_drink: MaterialButton? = null
 
+    private var listPermissionsNeeded  = arrayOf(Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.READ_EXTERNAL_STORAGE)
+
     private var listBill: ArrayList<BillModel> = ArrayList<BillModel>()
     private var adapterBill: AdapterBill? = null
 
@@ -93,6 +99,9 @@ class BillActivity: AppCompatActivity(), BillView {
 
         btn_amount!!.setOnClickListener {
 
+            if ((ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_DENIED) || ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_DENIED){
+                ActivityCompat.requestPermissions(this, listPermissionsNeeded, 7)
+            }
             ll_attend_total!!.visibility = View.VISIBLE
             nameBarman!!.setText("")
             total!!.setText(calculateTotal())

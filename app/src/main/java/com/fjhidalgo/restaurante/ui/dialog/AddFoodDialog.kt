@@ -120,7 +120,7 @@ class AddFoodDialog: DialogFragment() {
 
         cirImgPhoto!!.setOnClickListener {
             if (ContextCompat.checkSelfPermission(requireContext(), Manifest.permission.CAMERA) == PackageManager.PERMISSION_DENIED){
-                ActivityCompat.requestPermissions(requireActivity(), listPermissionsNeeded, 7);
+                ActivityCompat.requestPermissions(requireActivity(), listPermissionsNeeded, 7)
             } else {
                 selectPhoto()
             }
